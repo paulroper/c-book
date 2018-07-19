@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-#define IN 1
-#define OUT 1
-
 int count_input(void);
 int replace_blanks(void);
 int replace_tabs_backspaces(void);
@@ -70,7 +67,7 @@ int replace_tabs_backspaces()
     }
     else if (current_char == '\b')
     {
-      putchar("\\");
+      putchar('\\');
     }
 
     putchar(current_char);
@@ -79,7 +76,7 @@ int replace_tabs_backspaces()
 
 int main(int argc, char const *argv[])
 {
-  int current_char, next_char;
+  int current_char;
 
   while ((current_char = getchar()) != EOF)
   {
