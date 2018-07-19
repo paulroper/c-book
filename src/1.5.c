@@ -72,6 +72,8 @@ int replace_tabs_backspaces()
 
     putchar(current_char);
   }
+
+  return 0;
 }
 
 int main(int argc, char const *argv[])
@@ -94,4 +96,6 @@ int main(int argc, char const *argv[])
 
     putchar('\n');
   }
+
+  return 0;
 }
