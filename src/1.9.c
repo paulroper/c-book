@@ -92,7 +92,7 @@ int is_blank(char line[])
 int trim_line(char line[], char trimmed_line[])
 {
   int end_pos = get_end_index(line);
-  int new_end_pos = 0;
+  int new_end_pos = end_pos;
   int trimming = FALSE;
 
   zero_array(trimmed_line);
@@ -111,10 +111,7 @@ int trim_line(char line[], char trimmed_line[])
     else if (line[i] != ' ' && trimming == TRUE)
     {
       trimming = FALSE;
-
-      trimmed_line[i + 1] = '\n';
-      trimmed_line[i + 2] = '\0';
-      new_end_pos = i + 2;
+      new_end_pos = i + 1;
 
       trimmed_line[i] = line[i];
     }
@@ -123,6 +120,9 @@ int trim_line(char line[], char trimmed_line[])
       trimmed_line[i] = line[i];
     }
   }
+
+  trimmed_line[new_end_pos] = '\n';
+  trimmed_line[new_end_pos + 1] = '\0';
 
   return new_end_pos;
 }
