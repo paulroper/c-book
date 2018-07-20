@@ -14,6 +14,6 @@ do
   clang $f -Weverything -o $binary_name
 
   echo ""
-  echo "$f done! Executable can be found in $binary_name"
+  echo "$f done! Executable can be found at $binary_name"
 done
 
