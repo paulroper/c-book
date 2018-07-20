@@ -4,14 +4,22 @@
 #define TRUE 1
 #define FALSE 0
 
+int reverse_input(void);
 void reverse(char line[], char reversed_line[]);
 int trim_input(void);
-char *trim_line(char line[], char trimmed_line[]);
+int is_blank(char line[]);
+int trim_line(char line[], char trimmed_line[]);
+int get_end_index(char line[]);
 int find_longest_line(void);
 int get_line(char line[], int maxline);
 void copy(char to[], char from[]);
 
 int main(int argc, char const *argv[])
+{
+  return 0;
+}
+
+int reverse_input()
 {
   int len;
   char line[MAXLINE], reversed_line[MAXLINE];
@@ -55,6 +63,8 @@ int trim_input()
       printf("%s", trimmed_line);
     }
   }
+
+  return 0;
 }
 
 /* returns TRUE(1) or FALSE(0) */
@@ -72,16 +82,18 @@ int is_blank(char line[])
       blank = FALSE;
     }
   }
+
+  return blank;
 }
 
 /* trim line and return length of new string */
-char *trim_line(char line[], char trimmed_line[])
+int trim_line(char line[], char trimmed_line[])
 {
-  int i, in_string, trimming;
   int end_pos = get_end_index(line);
   int new_end_pos = 0;
+  int trimming = FALSE;
 
-  for (i = end_pos - 1; i >= 0; i--)
+  for (int i = end_pos - 1; i >= 0; i--)
   {
     if (line[i + 1] == '\n' && line[i] == ' ')
     {
@@ -163,15 +175,17 @@ int find_longest_line()
     printf("Found a line! Length is %d\n", max);
     printf("%s", longest);
   }
+
+  return 0;
 }
 
 /* get_line: read a line into s, return length */
 int get_line(char s[], int lim)
 {
-  int c, i;
-  c = 0;
+  int i;
+  char c = ' ';
 
-  for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+  for (i = 0; i < lim - 1 && (c = (char)getchar()) != EOF && c != '\n'; ++i)
   {
     s[i] = c;
   }
