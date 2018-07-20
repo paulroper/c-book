@@ -13,9 +13,11 @@ int get_end_index(char line[]);
 int find_longest_line(void);
 int get_line(char line[], int maxline);
 void copy(char to[], char from[]);
+void zero_array(char line[]);
 
 int main(int argc, char const *argv[])
 {
+  trim_input();
   return 0;
 }
 
@@ -92,6 +94,8 @@ int trim_line(char line[], char trimmed_line[])
   int end_pos = get_end_index(line);
   int new_end_pos = 0;
   int trimming = FALSE;
+
+  zero_array(trimmed_line);
 
   for (int i = end_pos - 1; i >= 0; i--)
   {
@@ -209,5 +213,13 @@ void copy(char to[], char from[])
   while ((to[i] = from[i]) != '\0')
   {
     ++i;
+  }
+}
+
+void zero_array(char line[])
+{
+  for (int i = 0; i < MAXLINE; i++)
+  {
+    line[i] = 0;
   }
 }
